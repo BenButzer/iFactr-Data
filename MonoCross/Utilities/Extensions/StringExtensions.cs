@@ -60,6 +60,26 @@ namespace MonoCross.Utilities
         }
 
         /// <summary>
+        /// Changes the first character of each word to uppercase and the rest of the characters to lowercase, then returns the result.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string ToFirstUpper(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            if (str.Contains("_"))
+                str = str.Replace("_", " ");
+
+            // Creates a TextInfo based on the "en-US" culture.
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            str = textInfo.ToTitleCase(str.ToLower());
+
+            return str;
+        }
+
+        /// <summary>
         /// A "String.IsNullOrWhiteSpace()" implementation for pre-.NET 4.0 projects
         /// </summary>
         public static bool IsNullOrEmptyOrWhiteSpace(this string str)
