@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D475FA37-7134-4F73-9AA4-A88EA6247AFF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iFactr.Data</RootNamespace>
+    <AssemblyName>iFactr.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+    </Reference>
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzureMobileProvider.cs" />
+    <Compile Include="CachePeriod.cs" />
+    <Compile Include="DeltaCache.cs" />
+    <Compile Include="Network.cs" />
+    <Compile Include="NetworkResource\CacheStaleMethod.cs" />
+    <Compile Include="NetworkResource\Exceptions\NetworkResourceLibraryException.cs" />
+    <Compile Include="NetworkResource\NetworkResourceArguments.cs" />
+    <Compile Include="NetworkResource\NetworkResourceLibrary.cs" />
+    <Compile Include="NetworkResource\ResourceRequest.cs" />
+    <Compile Include="NetworkResource\ResourceResponse.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\BaseResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheEncryption.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheFetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndex.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexItem.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexMap.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexQueue.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheManifest.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CachePrefetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheZip.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\ResourceResponseCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\DirectStream\ResourceResponseDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Exceptions\ResourceStrategyException.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\IResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\LocalFile\ResourceResponseLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyController.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyFactory.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyType.cs" />
+    <Compile Include="NetworkResource\StreamReaderExtensions.cs" />
+    <Compile Include="NetworkResource\XDocumentExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs" />
+    <Compile Include="ProviderRegistry.cs" />
+    <Compile Include="ProviderResponse.cs" />
+    <Compile Include="ProviderSettings.cs" />
+    <Compile Include="QueueException.cs" />
+    <Compile Include="RestfulCache.cs" />
+    <Compile Include="RestfulObject.cs" />
+    <Compile Include="RestfulQueue.cs" />
+    <Compile Include="SyncQueue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoCross\MonoCross.Wpf.csproj">
+      <Project>{3be2e20c-3670-4f7c-bc3a-a38e2daf3564}</Project>
+      <Name>MonoCross.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <!-- <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" /> -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+	     -->
+  <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <DefineConstants Condition="Exists('..\Server.txt')">$(DefineConstants);SERVERBUILD</DefineConstants>
+    </PropertyGroup>
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
