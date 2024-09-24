@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;TRACE;DEBUG;NET;NET8_0;NETCOREAPP;MAUI;TOUCH;MONO</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;TRACE;RELEASE;NET;NET8_0;NETCOREAPP;MAUI;TOUCH;MONO</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CreatePackage>false</CreatePackage>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Android\**" />
+    <Compile Remove="BestSellers Sample\**" />
+    <Compile Remove="Console\**" />
+    <Compile Remove="Distribution\**" />
+    <Compile Remove="Touch\**" />
+    <Compile Remove="Utilities\bin\**" />
+    <Compile Remove="Utilities\Notification\**" />
+    <Compile Remove="Utilities\obj\**" />
+    <Compile Remove="Utilities\Properties\**" />
+    <Compile Remove="Webkit\**" />
+    <Compile Remove="WPF\**" />
+    <EmbeddedResource Remove="Android\**" />
+    <EmbeddedResource Remove="BestSellers Sample\**" />
+    <EmbeddedResource Remove="Console\**" />
+    <EmbeddedResource Remove="Distribution\**" />
+    <EmbeddedResource Remove="Touch\**" />
+    <EmbeddedResource Remove="Utilities\bin\**" />
+    <EmbeddedResource Remove="Utilities\Notification\**" />
+    <EmbeddedResource Remove="Utilities\obj\**" />
+    <EmbeddedResource Remove="Utilities\Properties\**" />
+    <EmbeddedResource Remove="Webkit\**" />
+    <EmbeddedResource Remove="WPF\**" />
+    <None Remove="Android\**" />
+    <None Remove="BestSellers Sample\**" />
+    <None Remove="Console\**" />
+    <None Remove="Distribution\**" />
+    <None Remove="Touch\**" />
+    <None Remove="Utilities\bin\**" />
+    <None Remove="Utilities\Notification\**" />
+    <None Remove="Utilities\obj\**" />
+    <None Remove="Utilities\Properties\**" />
+    <None Remove="Webkit\**" />
+    <None Remove="WPF\**" />
+    <None Remove="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Navigation\ReflectionExtensions.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="Utilities\AndroidDevice.cs" />
+    <Compile Remove="Utilities\CompactDevice.cs" />
+    <Compile Remove="Utilities\ConsoleDevice.cs" />
+    <Compile Remove="Utilities\ImageComposition\AndroidCompositor.cs" />
+    <Compile Remove="Utilities\ImageComposition\GdiPlusCompositor.cs" />
+    <Compile Remove="Utilities\ImageComposition\TouchCompositor.cs" />
+    <Compile Remove="Utilities\Logging\AndroidLogger.cs" />
+    <Compile Remove="Utilities\Logging\Reachability.cs" />
+    <Compile Remove="Utilities\Network\AndroidFetcher.cs" />
+    <Compile Remove="Utilities\Network\AndroidNetwork.cs" />
+    <Compile Remove="Utilities\Resources\AndroidResources.cs" />
+    <Compile Remove="Utilities\Scanning\BarcodeScannerFactory.cs" />
+    <Compile Remove="Utilities\Scanning\LineaPro.cs" />
+    <Compile Remove="Utilities\Scanning\RedLaser.cs" />
+    <Compile Remove="Utilities\Scanning\RedLaser.MD.cs" />
+    <Compile Remove="Utilities\Scanning\RedLaser.MT.cs" />
+    <Compile Remove="Utilities\Storage\AndroidFile.cs" />
+    <Compile Remove="Utilities\Threading\AndroidThread.cs" />
+    <Compile Remove="Utilities\Threading\CompactFrameworkThread.cs" />
+    <Compile Remove="Utilities\Threading\DispatcherThread.cs" />
+    <Compile Remove="Utilities\Threading\TouchThread.cs" />
+    <Compile Remove="Utilities\TouchDevice.cs" />
+    <Compile Remove="Utilities\WebDevice.cs" />
+    <Compile Remove="Utilities\WebSessionDictionary.cs" />
+    <Compile Remove="Utilities\WindowsDevice.cs" />
+    <Compile Remove="Utilities\WpfDevice.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="build.cmd" />
+    <None Remove="build.xml" />
+    <None Remove="MonoCross.nuspec" />
+    <None Remove="MonoCross.png" />
+    <None Remove="README.markdown" />
+    <None Remove="Utilities\MonoCross.Utilities.Android.nuspec" />
+    <None Remove="Utilities\MonoCross.Utilities.iOS.nuspec" />
+    <None Remove="Utilities\MonoCross.Utilities.NET.nuspec" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Lib\iFactrTouch\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

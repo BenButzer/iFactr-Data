@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;TRACE;DEBUG;NET;NET7_0;NETCOREAPP;TOUCH</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;TRACE;RELEASE;NET;NET7_0;NETCOREAPP;TOUCH</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Notification\Notify.MT.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImageComposition\TouchCompositor.cs" />
+    <Compile Include="Logging\Reachability.cs" />
+    <Compile Include="Scanning\BarcodeScannerFactory.cs" />
+    <Compile Include="Scanning\RedLaser.cs" />
+    <Compile Include="Scanning\RedLaser.MT.cs" />
+    <Compile Include="TouchDevice.cs" />
+    <Compile Include="Threading\TouchThread.cs" />
+    <Compile Include="Notification\Notify.Maui.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoCross.Maui.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>
