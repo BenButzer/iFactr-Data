@@ -740,7 +740,7 @@ namespace iFactr.Data
                         {
                             if (!queueitems.ContainsKey(key))
                             {
-                                var restfulObject = cache.GetValueOrDefault(key);
+                                var restfulObject = System.Collections.Generic.DictionaryExtensions.GetValueOrDefault<string, RestfulObject<T>>(cache, key);
                                 if (restfulObject != null && restfulObject.Object != null)
                                     retval.Add(restfulObject.Object);
                             }

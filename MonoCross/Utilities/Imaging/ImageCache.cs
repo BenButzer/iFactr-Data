@@ -113,7 +113,7 @@ namespace MonoCross
         {
             lock (cacheLock)
             {
-                var entry = cache.GetValueOrDefault(filePath);
+                var entry = System.Collections.Generic.DictionaryExtensions.GetValueOrDefault<string, CacheEntry>(cache, filePath);
                 if (entry.ExpirationDate != null && (DateTime.Now > entry.ExpirationDate.Value))
                 {
                     cache.Remove(filePath);
