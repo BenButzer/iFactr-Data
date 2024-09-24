@@ -45,7 +45,9 @@ namespace MonoCross.Utilities.Storage
         {
             if (filename == null)
             {
-                throw new ArgumentNullException(filename);
+                // throw new ArgumentNullException(filename);
+                // Return a null instead of throwing an uncaught exception - mSTAR 5.9 Oct 2022
+                return null;
             }
 
             DateTime dtMetric = DateTime.UtcNow;
@@ -81,6 +83,7 @@ namespace MonoCross.Utilities.Storage
 
         /// <summary>
         /// Reads the specified file and returns its contents as a byte array.
+        /// Modified 2022 to not throw errors, but just return null
         /// </summary>
         /// <param name="filename">The file to read.</param>
         /// <param name="key">The keyword to derive the encryption key from.</param>
@@ -90,7 +93,9 @@ namespace MonoCross.Utilities.Storage
         {
             if (filename == null)
             {
-                throw new ArgumentNullException(filename);
+                //throw new ArgumentNullException(filename);
+                // Return a null instead of throwing an uncaught exception - mSTAR 5.9 Oct 2022
+                return null;
             }
 
             DateTime dtMetric = DateTime.UtcNow;
@@ -117,10 +122,11 @@ namespace MonoCross.Utilities.Storage
                 }
                 else
                 {
-                    Device.Log.Error("error in file read", cexc);
-                    var exc = new Exception("error in file read", cexc);
-                    exc.Data.Add("filename", filename);
-                    throw exc;
+                    Device.Log.Error("error in file read " + filename + " " + cexc.Message, cexc);
+                    //var exc = new Exception("error in file read", cexc);
+                    //exc.Data.Add("filename", filename);
+                    //throw exc;
+                    return null;
                 }
             }
 
@@ -137,7 +143,9 @@ namespace MonoCross.Utilities.Storage
         {
             if (filename == null)
             {
-                throw new ArgumentNullException(filename);
+                // throw new ArgumentNullException(filename);
+                // Return a null instead of throwing an uncaught exception - mSTAR 5.9 Oct 2022
+                return null;
             }
 
             byte[] retval = null;
@@ -165,7 +173,8 @@ namespace MonoCross.Utilities.Storage
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Error Reading File: {0} - BaseFile:l99, tid:{1}", filename, threadId), ex);
+                //throw new Exception(string.Format("Error Reading File: {0} - BaseFile:l99, tid:{1}", filename, threadId), ex);
+                Device.Log.Error(string.Format("Exception Reading File: {0} - BaseFile:l99, tid:{1} message:{2}", filename, threadId, ex.Message));
             }
             return retval;
         }
@@ -233,7 +242,18 @@ namespace MonoCross.Utilities.Storage
         public virtual string ReadString(string filename, string key, byte[] salt)
         {
             byte[] contents = Read(filename, key, salt);
-            return Encoding.Unicode.GetString(contents, 0, contents.Length);
+            // cascade null all the way back
+            if (contents == null)
+                return null;
+
+            try
+            {
+                return Encoding.Unicode.GetString(contents, 0, contents.Length);
+            }
+            catch
+            {
+                return null; 
+            }
         }
 
         /// <summary>
@@ -243,7 +263,17 @@ namespace MonoCross.Utilities.Storage
         public virtual string ReadStringClear(string filename)
         {
             byte[] contents = ReadClear(filename);
-            return Encoding.Unicode.GetString(contents, 0, contents.Length);
+            // cascade null all the way back
+            if (contents == null)
+                return null;
+            try
+            {
+                return Encoding.Unicode.GetString(contents, 0, contents.Length);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         #endregion
